@@ -1,6 +1,8 @@
 # ML Assignment 2 - Income Classification (UCI Adult Dataset)
 
-M.Tech (AIML/DSE) - Machine Learning - Assignment 2
+M.Tech (AIML) - Machine Learning - Assignment 2
+
+Gourab Banerjee (2026CT05187)
 
 In this assignment I trained 5 classification models on the UCI Adult dataset and compared them using 6 evaluation metrics. All the models use the same dataset and the same 80:20 train-test split, so the comparison is fair.
 
