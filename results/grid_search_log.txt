@@ -1,0 +1,148 @@
+
+### DATASET: UCI Adult (Census Income) ###
+Instances : 48,842
+Features  : 14 (6 numeric, 8 categorical)
+Numeric     : ['age', 'fnlwgt', 'education-num', 'capital-gain', 'capital-loss', 'hours-per-week']
+Categorical : ['workclass', 'education', 'marital-status', 'occupation', 'relationship', 'race', 'sex', 'native-country']
+Missing values per column: {'workclass': 2799, 'occupation': 2809, 'native-country': 857}
+Rows with >=1 missing value: 3,620
+Exact duplicate rows: 52
+Class counts: {'<=50K': 37155, '>50K': 11687}
+Class %     : {'<=50K': 76.07, '>50K': 23.93}
+
+Duplicates removed: 52  ->  48,790 rows remain
+Train: 39,032 rows | Test: 9,758 rows (80:20, stratified)
+Positive (>50K) share  train: 0.2394 | test: 0.2394
+Saved test split -> test_data.csv
+======================================================================
+Logistic Regression
+======================================================================
+Parameters: {'clf__C': 0.1}
+Best 5-fold CV ROC-AUC (train): 0.9045
+Training time: 3.0s
+  Accuracy  : 0.8527
+  AUC       : 0.9080
+  Precision : 0.7333
+  Recall    : 0.6049
+  F1        : 0.6629
+  MCC       : 0.5741
+Confusion matrix [[TN FP] [FN TP]]:
+[[6908  514]
+ [ 923 1413]]
+              precision    recall  f1-score   support
+
+       <=50K     0.8821    0.9307    0.9058      7422
+        >50K     0.7333    0.6049    0.6629      2336
+
+    accuracy                         0.8527      9758
+   macro avg     0.8077    0.7678    0.7844      9758
+weighted avg     0.8465    0.8527    0.8476      9758
+
+======================================================================
+Decision Tree
+======================================================================
+Parameters: {'clf__criterion': 'gini', 'clf__max_depth': 10, 'clf__min_samples_leaf': 50}
+Best 5-fold CV ROC-AUC (train): 0.9044
+Training time: 64.5s
+  Accuracy  : 0.8636
+  AUC       : 0.9104
+  Precision : 0.7772
+  Recall    : 0.6032
+  F1        : 0.6792
+  MCC       : 0.6020
+Confusion matrix [[TN FP] [FN TP]]:
+[[7018  404]
+ [ 927 1409]]
+              precision    recall  f1-score   support
+
+       <=50K     0.8833    0.9456    0.9134      7422
+        >50K     0.7772    0.6032    0.6792      2336
+
+    accuracy                         0.8636      9758
+   macro avg     0.8302    0.7744    0.7963      9758
+weighted avg     0.8579    0.8636    0.8573      9758
+
+======================================================================
+kNN
+======================================================================
+Parameters: {'clf__n_neighbors': 41, 'clf__weights': 'uniform'}
+Best 5-fold CV ROC-AUC (train): 0.8968
+Training time: 103.4s
+  Accuracy  : 0.8529
+  AUC       : 0.9038
+  Precision : 0.7270
+  Recall    : 0.6177
+  F1        : 0.6679
+  MCC       : 0.5774
+Confusion matrix [[TN FP] [FN TP]]:
+[[6880  542]
+ [ 893 1443]]
+              precision    recall  f1-score   support
+
+       <=50K     0.8851    0.9270    0.9056      7422
+        >50K     0.7270    0.6177    0.6679      2336
+
+    accuracy                         0.8529      9758
+   macro avg     0.8060    0.7723    0.7867      9758
+weighted avg     0.8473    0.8529    0.8487      9758
+
+======================================================================
+Naive Bayes
+======================================================================
+Parameters: {'clf__var_smoothing': 0.01}
+Best 5-fold CV ROC-AUC (train): 0.8853
+Training time: 2.2s
+  Accuracy  : 0.7758
+  AUC       : 0.8884
+  Precision : 0.5193
+  Recall    : 0.8532
+  F1        : 0.6456
+  MCC       : 0.5281
+Confusion matrix [[TN FP] [FN TP]]:
+[[5577 1845]
+ [ 343 1993]]
+              precision    recall  f1-score   support
+
+       <=50K     0.9421    0.7514    0.8360      7422
+        >50K     0.5193    0.8532    0.6456      2336
+
+    accuracy                         0.7758      9758
+   macro avg     0.7307    0.8023    0.7408      9758
+weighted avg     0.8409    0.7758    0.7904      9758
+
+======================================================================
+Random Forest (Ensemble)
+======================================================================
+Parameters: {'clf__max_depth': 25, 'clf__min_samples_leaf': 3}
+Best 5-fold CV ROC-AUC (train): 0.9171
+Training time: 562.7s
+  Accuracy  : 0.8687
+  AUC       : 0.9216
+  Precision : 0.7872
+  Recall    : 0.6190
+  F1        : 0.6930
+  MCC       : 0.6182
+Confusion matrix [[TN FP] [FN TP]]:
+[[7031  391]
+ [ 890 1446]]
+              precision    recall  f1-score   support
+
+       <=50K     0.8876    0.9473    0.9165      7422
+        >50K     0.7872    0.6190    0.6930      2336
+
+    accuracy                         0.8687      9758
+   macro avg     0.8374    0.7832    0.8048      9758
+weighted avg     0.8636    0.8687    0.8630      9758
+
+
+### COMPARISON TABLE (test set) ###
+                          Accuracy     AUC  Precision  Recall      F1     MCC
+ML Model Name                                                                
+Logistic Regression         0.8527  0.9080     0.7333  0.6049  0.6629  0.5741
+Decision Tree               0.8636  0.9104     0.7772  0.6032  0.6792  0.6020
+kNN                         0.8529  0.9038     0.7270  0.6177  0.6679  0.5774
+Naive Bayes                 0.7758  0.8884     0.5193  0.8532  0.6456  0.5281
+Random Forest (Ensemble)    0.8687  0.9216     0.7872  0.6190  0.6930  0.6182
+
+Plots saved in /home/claude/ML_Assignment_2/results/plots
+Models saved in /home/claude/ML_Assignment_2/model/saved_models

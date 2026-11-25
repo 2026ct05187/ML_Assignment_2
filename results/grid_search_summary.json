@@ -1,0 +1,176 @@
+{
+  "dataset": {
+    "n_instances": 48842,
+    "n_features": 14,
+    "numeric_features": [
+      "age",
+      "fnlwgt",
+      "education-num",
+      "capital-gain",
+      "capital-loss",
+      "hours-per-week"
+    ],
+    "categorical_features": [
+      "workclass",
+      "education",
+      "marital-status",
+      "occupation",
+      "relationship",
+      "race",
+      "sex",
+      "native-country"
+    ],
+    "missing_per_column": {
+      "workclass": 2799,
+      "occupation": 2809,
+      "native-country": 857
+    },
+    "rows_with_missing": 3620,
+    "n_duplicates": 52,
+    "class_counts": {
+      "<=50K": 37155,
+      ">50K": 11687
+    },
+    "class_pct": {
+      "<=50K": 76.07,
+      ">50K": 23.93
+    }
+  },
+  "duplicates_removed": 52,
+  "rows_after_cleaning": 48790,
+  "train_rows": 39032,
+  "test_rows": 9758,
+  "train_pos_rate": 0.23941893830703012,
+  "test_pos_rate": 0.23939331830293092,
+  "models": {
+    "Logistic Regression": {
+      "params": {
+        "clf__C": 0.1
+      },
+      "cv_auc": 0.9044654949669232,
+      "train_time_s": 2.98,
+      "confusion_matrix": [
+        [
+          6908,
+          514
+        ],
+        [
+          923,
+          1413
+        ]
+      ],
+      "metrics": {
+        "Accuracy": 0.8527,
+        "AUC": 0.908,
+        "Precision": 0.7333,
+        "Recall": 0.6049,
+        "F1": 0.6629,
+        "MCC": 0.5741
+      }
+    },
+    "Decision Tree": {
+      "params": {
+        "clf__criterion": "gini",
+        "clf__max_depth": 10,
+        "clf__min_samples_leaf": 50
+      },
+      "cv_auc": 0.904406508363107,
+      "train_time_s": 64.55,
+      "confusion_matrix": [
+        [
+          7018,
+          404
+        ],
+        [
+          927,
+          1409
+        ]
+      ],
+      "metrics": {
+        "Accuracy": 0.8636,
+        "AUC": 0.9104,
+        "Precision": 0.7772,
+        "Recall": 0.6032,
+        "F1": 0.6792,
+        "MCC": 0.602
+      }
+    },
+    "kNN": {
+      "params": {
+        "clf__n_neighbors": 41,
+        "clf__weights": "uniform"
+      },
+      "cv_auc": 0.8968288518102755,
+      "train_time_s": 103.42,
+      "confusion_matrix": [
+        [
+          6880,
+          542
+        ],
+        [
+          893,
+          1443
+        ]
+      ],
+      "metrics": {
+        "Accuracy": 0.8529,
+        "AUC": 0.9038,
+        "Precision": 0.727,
+        "Recall": 0.6177,
+        "F1": 0.6679,
+        "MCC": 0.5774
+      }
+    },
+    "Naive Bayes": {
+      "params": {
+        "clf__var_smoothing": 0.01
+      },
+      "cv_auc": 0.8852796692786973,
+      "train_time_s": 2.17,
+      "confusion_matrix": [
+        [
+          5577,
+          1845
+        ],
+        [
+          343,
+          1993
+        ]
+      ],
+      "metrics": {
+        "Accuracy": 0.7758,
+        "AUC": 0.8884,
+        "Precision": 0.5193,
+        "Recall": 0.8532,
+        "F1": 0.6456,
+        "MCC": 0.5281
+      }
+    },
+    "Random Forest (Ensemble)": {
+      "params": {
+        "clf__max_depth": 25,
+        "clf__min_samples_leaf": 3
+      },
+      "cv_auc": 0.9171164697789773,
+      "train_time_s": 562.73,
+      "confusion_matrix": [
+        [
+          7031,
+          391
+        ],
+        [
+          890,
+          1446
+        ]
+      ],
+      "metrics": {
+        "Accuracy": 0.8687,
+        "AUC": 0.9216,
+        "Precision": 0.7872,
+        "Recall": 0.619,
+        "F1": 0.693,
+        "MCC": 0.6182
+      }
+    }
+  }
+}
